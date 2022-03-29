@@ -1,8 +1,16 @@
 import pyperclip
+import os
 
 cgreen = '\33[0;32m'
 cend = '\033[0m'
 cred = '\033[91m'
+
+def notification(message):
+    title = "Добавленно слово исключение:\n"
+    command = f'''
+    osascript -e 'display notification "{message}" with title "{title}"'
+    '''
+    os.system(command)
 
 def bad_words_from_file():
     with open('bad_words.txt', 'r') as text_file:
@@ -17,6 +25,7 @@ def bad_words_from_file():
 
 def add_bad_word():
     with open('bad_words.txt', 'a') as text_file:
+        notification(pyperclip.paste())
         print(f"добавить слово {cred}{pyperclip.paste()}{cend}")
         text_file.write(pyperclip.paste()+'\n')
 
