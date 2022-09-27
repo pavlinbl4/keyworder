@@ -2,16 +2,15 @@ import re
 import pyperclip
 from pymystem3 import Mystem
 from datetime import datetime
+from notific import notification
+from pathlib import Path
 import os
 
-keyword_file = '/Volumes/big4photo/Documents/keywords/keywords in work.txt'
+path_to_file = f'{Path().home()}/Documents/keywords'
+os.makedirs(path_to_file, exist_ok=True)
 
-def notification(message):
-    title = "Обработаны ключевые слова:"
-    command = f'''
-    osascript -e 'display notification "{message}" with title "{title}"'
-    '''
-    os.system(command)
+keyword_file = f'{path_to_file}/keywords in work.txt'
+
 
 def bad_words_from_file():  # извлекаю слова исключения из текстового файла
     with open('bad_words.txt', 'r') as text_file:
@@ -29,7 +28,7 @@ def write_keywords(final):
         text_file.write(final)
 
 
-def words_optimization(final=None):
+def words_optimization():
     durty_words = pyperclip.paste().lower()
     bad_words = bad_words_from_file()
     optimization = re.findall(r'\w{3,}', durty_words)  # оставляю только слова длиннее трех букв
@@ -42,9 +41,11 @@ def words_optimization(final=None):
 
     write_keywords(final)
     pyperclip.copy(final)
-    notification(final)
-    print(final)
+    notification(final, 'Обработаны ключевые слова:')
+    return final
 
 
 if __name__ == '__main__':
-    words_optimization()
+    assert words_optimization() is not None
+    assert type(words_optimization()) == str
+    print(words_optimization())
