@@ -5,15 +5,17 @@ from datetime import datetime
 from notific import notification
 from pathlib import Path
 import os
+from check_file_exist import create_file_if_no
 
-path_to_file = f'{Path().home()}/Documents/keywords'
-os.makedirs(path_to_file, exist_ok=True)
+path_to_folder = f'{Path().home()}/Documents/keywords'
+os.makedirs(path_to_folder, exist_ok=True)
 
-keyword_file = f'{path_to_file}/keywords in work.txt'
+keyword_file = create_file_if_no(path_to_folder,'keywords in work.txt')
+bad_word_file = create_file_if_no(path_to_folder,'bad_words.txt')
 
 
 def bad_words_from_file():  # извлекаю слова исключения из текстового файла
-    with open('bad_words.txt', 'r') as text_file:
+    with open(bad_word_file, 'r') as text_file:
         lines = text_file.readlines()
     bad_words = ''
     for i in lines:
@@ -46,6 +48,7 @@ def words_optimization():
 
 
 if __name__ == '__main__':
-    assert words_optimization() is not None
-    assert type(words_optimization()) == str
-    print(words_optimization())
+    words_optimization()
+    # assert words_optimization() is not None
+    # assert type(words_optimization()) == str
+
