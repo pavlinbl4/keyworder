@@ -2,6 +2,8 @@ import re
 import pyperclip
 from pymystem3 import Mystem
 from datetime import datetime
+
+from keyworder.remove_doubles import no_doubles
 from notific import notification
 from pathlib import Path
 import os
@@ -37,10 +39,7 @@ def words_optimization():
     optimization = (' '.join(optimization))
     lemmatized_words = "".join(Mystem().lemmatize(optimization))
     no_bad_words = re.sub(bad_words, '', lemmatized_words)  # удаляю слова паразиты
-    final = re.sub(r'\b(\w+)(\s+\1)', r'\1', re.sub(r'\W+', ' ', no_bad_words),
-                   flags=re.I).strip()  # удаляю повторы слов
-    final = re.sub(r'\s+', ', ', final)  # разделяю слова запятыми
-
+    final = no_doubles(no_bad_words)
     write_keywords(final)
     pyperclip.copy(final)
     notification(final, 'Обработаны ключевые слова:')
@@ -49,6 +48,7 @@ def words_optimization():
 
 if __name__ == '__main__':
     words_optimization()
+    # write_keywords("")
     # assert words_optimization() is not None
     # assert type(words_optimization()) == str
 
