@@ -33,9 +33,12 @@ def create_checkbox_list(words):
 
 
 selected_words = []
-_words = create_checkbox_list(
-    ["industrialisation", "apple", 'melon', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box', 'knife',
-     'bread', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box', 'knife', 'bread', "industrialisation",
-     "industrialisation", "apple", 'melon', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box', 'knife',
-     'bread', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box'])
-print(_words)
+
+if __name__ == '__main__':
+
+    _words = create_checkbox_list(
+        ["industrialisation", "apple", 'melon', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box', 'knife',
+         'bread', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box', 'knife', 'bread', "industrialisation",
+         "industrialisation", "apple", 'melon', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box', 'knife',
+         'bread', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box'])
+    print(_words)
