@@ -1,7 +1,8 @@
 import tkinter as tk
 
 
-def create_checkbox_list(words):
+def create_checkbox_list(words,window_name):
+    selected_words = []
     def submit():
         for i, word in enumerate(words):
             if checkboxes[i].get() == 1:
@@ -12,7 +13,7 @@ def create_checkbox_list(words):
     l = 200 + 140 * ((len(words) // 10))
     window = tk.Tk()
     window.geometry(f"{l}x{h}")
-    window.title("Checkbox List")
+    window.title(window_name)
 
     checkboxes = []
     for i, word in enumerate(words):
@@ -32,7 +33,7 @@ def create_checkbox_list(words):
 # Example usage
 
 
-selected_words = []
+# selected_words = []
 
 if __name__ == '__main__':
 
