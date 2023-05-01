@@ -5,7 +5,7 @@ result = []
 
 def create_input_window():
     def confirm_input():
-        result.append(input_field.get("1.0",'end-1c'))
+        result.append(input_field.get("1.0", 'end-1c'))
         window.destroy()
 
     def cancel_input():
@@ -15,7 +15,14 @@ def create_input_window():
     window = tk.Tk()
 
     # Set the height of the window to 100 pixels
-    window.geometry('580x240')
+    window_width = 570
+    window_height = 240
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+    x = int(screen_width / 4)
+    y = int(screen_height / 2 - window_height / 2)
+    window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+
 
     # Disable the ability to resize the window
     window.resizable(False, False)
