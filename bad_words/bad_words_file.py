@@ -36,16 +36,16 @@ def add_bad_word():
                       f"добавлено в список исключений")
                 text_file.write(new_bad_word + '\n')
 
-def add_bad_words_from_list(list, bad_word_file):
+
+def add_bad_words_from_list(words_list, bad_word_file):
     with open(bad_word_file, 'a') as text_file:
-        for word in list:
+        for word in words_list:
             if word not in bad_words_from_file(bad_word_file):
                 text_file.write(word + '\n')
-
 
 
 if __name__ == '__main__':
     path_to_folder = f'{Path().home()}/Documents/keywords'
     os.makedirs(path_to_folder, exist_ok=True)
     bad_word_file = create_file_if_no(path_to_folder, 'bad_words.txt')
-    add_bad_word()
+    print(bad_words_from_file(bad_word_file))
