@@ -1,8 +1,9 @@
 import tkinter as tk
 
 
-def create_checkbox_list(words,window_name):
+def create_checkbox_list(words, window_name):
     selected_words = []
+
     def submit():
         for i, word in enumerate(words):
             if checkboxes[i].get() == 1:
@@ -36,10 +37,12 @@ def create_checkbox_list(words,window_name):
 # selected_words = []
 
 if __name__ == '__main__':
-
     _words = create_checkbox_list(
-        ["industrialisation", "apple", 'melon', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box', 'knife',
-         'bread', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box', 'knife', 'bread', "industrialisation",
-         "industrialisation", "apple", 'melon', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box', 'knife',
-         'bread', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box'])
+        ["industrialisation", "apple", 'melon', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box',
+         'knife',
+         'bread', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box', 'knife', 'bread',
+         "industrialisation",
+         "industrialisation", "apple", 'melon', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box',
+         'knife',
+         'bread', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box'],window_name='test')
     print(_words)
