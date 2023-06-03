@@ -14,4 +14,3 @@ def create_file_if_no(subfolder_name, file_name):
 
 if __name__ == '__main__':
     create_file_if_no('subflder_name', 'file_name')
-
