@@ -1,14 +1,14 @@
 # 1. Display window to the words that you want to optimise
-from bad_words.bad_words_file import bad_words_from_file, add_bad_words_from_list
-from confirm_window.output_window import display_info
-from keyworder.check_file_exist import create_file_if_no
-from keyworder.checkbox_output import create_checkbox_list
-from keyworder.lists_difference import list_dif
-from keyworder.optimize_input_text import optimize_text
-from keyworder.text_input_window import create_input_window
-from keyworder.write_keywords import write_keywords
 import sys
 import pyperclip
+from bad_words.bad_words_file import bad_words_from_file, add_bad_words_from_list
+from gui_windows.output_window import display_info
+from keyworder.checkbox_output import create_checkbox_list
+from gui_windows.text_input_window import create_input_window
+from keyworder.keyworder_2022_main import write_keywords
+from kw_2023.check_file_exist import create_file_if_no
+from kw_2023.lists_difference import list_dif
+from kw_2023.optimize_input_text import optimize_text
 
 if __name__ == '__main__':
     keyword_file = create_file_if_no('keywords', 'keywords in work.txt')
@@ -27,7 +27,7 @@ if __name__ == '__main__':
                                              window_name="Select keywords")
 
         # save words for work in text file
-        write_keywords(",".join(word_for_work), keyword_file)
+        write_keywords(",".join(word_for_work))
         print(f'{word_for_work = }')
 
         # now I want to check bad words
@@ -39,7 +39,6 @@ if __name__ == '__main__':
         print(f'{selected_bad_words = }')
 
         add_bad_words_from_list(selected_bad_words, bad_word_file)  # copy words for work to clip memory
-
 
     else:
         print("NO KEYWORDS FOR WORK")
