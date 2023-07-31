@@ -1,13 +1,11 @@
 import re
 import pyperclip
 from pymystem3 import Mystem
-
 from bad_words.bad_words_file import bad_words_from_file
-
 from keyworder.remove_doubles import no_doubles
-from keyworder.write_keywords import write_keywords
+from kw_2023.check_file_exist import create_file_if_no
+from kw_2023.write_keywords import write_keywords
 from notific import notification
-from check_file_exist import create_file_if_no
 
 keyword_file = create_file_if_no('keywords', 'keywords in work.txt')
 bad_word_file = create_file_if_no('keywords', 'bad_words.txt')
@@ -30,5 +28,5 @@ def words_optimization():
 if __name__ == '__main__':
     words_optimization()
     # write_keywords("")
-    # assert words_optimization() is not None
-    # assert type(words_optimization()) == str
+    assert words_optimization() is not None
+    assert type(words_optimization()) == str
