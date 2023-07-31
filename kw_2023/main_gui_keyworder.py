@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
         # now I want to check bad words
         unused_words = list_dif(durty_words_set, word_for_work)
-        pyperclip.copy(", ".join(unused_words))
+        pyperclip.copy(", ".join(word_for_work))
         print(f'{unused_words = }')
 
         selected_bad_words = create_checkbox_list(unused_words, window_name='select "Bad Words"')
