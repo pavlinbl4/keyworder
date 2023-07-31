@@ -5,15 +5,15 @@ def create_checkbox_list(words, window_name):
     selected_words = []
 
     def submit():
-        for i, word in enumerate(words):
-            if checkboxes[i].get() == 1:
-                selected_words.append(word)
+        for x, keyword in enumerate(words):
+            if checkboxes[x].get() == 1:
+                selected_words.append(keyword)
         window.destroy()
 
-    h = 30 * (len(words) % 10 + 10)
-    l = 200 + 140 * ((len(words) // 10))
+    height = 30 * (len(words) % 10 + 10)
+    long = 200 + 140 * (len(words) // 10)
     window = tk.Tk()
-    window.geometry(f"{l}x{h}")
+    window.geometry(f"{long}x{height}")
     window.title(window_name)
 
     checkboxes = []
@@ -24,17 +24,11 @@ def create_checkbox_list(words, window_name):
         checkboxes.append(var)
 
     submit_button = tk.Button(window, text="Submit", command=submit)
-    # submit_button.grid(row=i + 1, column=0, columnspan=len(words), padx=50, pady=5)
-    submit_button.grid(row=i + 1, column=0, columnspan=len(words), pady=35)
+    submit_button.grid(row=len(words) + 1, column=0, columnspan=len(words), pady=35)
 
     window.mainloop()
     return selected_words
 
-
-# Example usage
-
-
-# selected_words = []
 
 if __name__ == '__main__':
     _words = create_checkbox_list(
@@ -44,5 +38,5 @@ if __name__ == '__main__':
          "industrialisation",
          "industrialisation", "apple", 'melon', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box',
          'knife',
-         'bread', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box'],window_name='test')
+         'bread', 'fox', 'rabbit', 'box', 'knife', 'bread', 'fox', 'rabbit', 'box'], window_name='test')
     print(_words)
