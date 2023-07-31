@@ -9,7 +9,7 @@ import tkinter as tk
 def confirmation_window(bad_word):
     answer = []
     root = tk.Tk()
-    root.geometry("300x100")
+    root.geometry("300x100+1600+300")
     root.resizable(False, False)
     root.title("")
 
