@@ -1,13 +1,11 @@
 import re
 import pyperclip
-
 from datetime import datetime
-
 from keyworder.lematization import lema
-from notific import notification
+from keyworder.notific import notification
+from kw_2023.check_file_exist import create_file_if_no
 from pathlib import Path
 import os
-from check_file_exist import create_file_if_no
 
 path_to_folder = f'{Path().home()}/Documents/keywords'
 os.makedirs(path_to_folder, exist_ok=True)
@@ -37,7 +35,6 @@ def remove_doubles(no_bad_words):
     return ", ".join([word.strip() for word in set(no_bad_words) if word.isprintable()])
 
 
-
 def words_optimization():
     durty_words = pyperclip.paste().lower()  # 1 keyword for optimisation from clip - string
     # bad_words = bad_words_from_file()  # keywords from file that I want to delete
@@ -49,8 +46,6 @@ def words_optimization():
     no_doubles = remove_doubles(lemmatized_words)  # remove doubles
     final = re.sub(bad_words, '', no_doubles)  # удаляю слова паразиты
 
-
-
     # final = re.sub(r'\s+', ', ', no_doubles)  # разделяю слова запятыми
 
     write_keywords(final)
@@ -61,5 +56,5 @@ def words_optimization():
 
 if __name__ == '__main__':
     words_optimization()
-    # assert words_optimization() is not None
-    # assert type(words_optimization()) == str
+    assert words_optimization() is not None
+    assert type(words_optimization()) == str
