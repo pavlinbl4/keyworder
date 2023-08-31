@@ -38,7 +38,7 @@ if __name__ == '__main__':
         selected_bad_words = create_checkbox_list(unused_words, window_name='select "Bad Words"')
         print(f'{selected_bad_words = }')
 
-        add_bad_words_from_list(selected_bad_words, bad_word_file)  # copy words for work to clip memory
+        add_bad_words_from_list(selected_bad_words)  # copy words for work to clip memory
 
     else:
         print("NO KEYWORDS FOR WORK")
