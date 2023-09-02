@@ -1,7 +1,7 @@
 import re
 
 from bad_words.bad_words_file import bad_words_from_file
-from keyworder.lematization import lema
+from lematization import lema
 from keyworder.set_to_string import set_to_string
 from keyworder.words_more_two_litters import extract_words
 from kw_2023.check_file_exist import create_file_if_no
