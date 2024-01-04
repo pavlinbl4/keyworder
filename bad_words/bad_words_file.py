@@ -21,7 +21,7 @@ def bad_words_from_file(file_path):
     return bad_word_from_file
 
 
-def add_bad_word():
+def add_bad_word_from_clip(bad_word_file):
     with open(bad_word_file, 'a') as text_file:
         new_bad_word = pyperclip.paste()
         if new_bad_word in bad_words_from_file(bad_word_file):
@@ -35,15 +35,23 @@ def add_bad_word():
                 text_file.write(new_bad_word + '\n')
 
 
-def add_bad_words_from_list(words_list):
+def add_bad_words_from_list(words_list, bad_word_file):
     with open(bad_word_file, 'a') as text_file:
         for word in words_list:
             if word not in bad_words_from_file(bad_word_file):
                 text_file.write(word + '\n')
 
-
-if __name__ == '__main__':
+def main():
     path_to_folder = f'{Path().home()}/Documents/keywords'
     os.makedirs(path_to_folder, exist_ok=True)
     bad_word_file = create_file_if_no(path_to_folder, 'bad_words.txt')
-    print(bad_words_from_file(bad_word_file))
+
+    add_bad_word_from_clip(bad_word_file)
+
+
+
+if __name__ == '__main__':
+    main()
+
+
+
