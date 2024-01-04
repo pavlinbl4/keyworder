@@ -8,7 +8,8 @@ def no_doubles(no_bad_words):  # возвращает строку со слов
 
 
 if __name__ == '__main__':
-    print(no_doubles('слон, слон, dog, fox, dog'))
+    # print(no_doubles('     rabbit,слон, слон, dog, fox, dog, rabbit'))
 
     assert no_doubles('слон, слон, dog, fox, dog') == 'dog, fox, слон'
     assert no_doubles('слон, слон, пес') == 'пес, слон'
+    assert no_doubles('     rabbit,слон, слон, dog, fox, dog, rabbit') == 'dog, fox, rabbit, слон'
