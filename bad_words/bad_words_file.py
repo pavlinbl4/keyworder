@@ -11,14 +11,11 @@ from keyworder.notific import notification
 from kw_2023.check_file_exist import create_file_if_no
 
 
-def bad_words_from_file(file_path):
-    with open(file_path, 'r') as text_file:
-        lines = text_file.readlines()
-    bad_words = ''
-    for i in lines:
-        bad_words += '|' + i.strip()
-    bad_word_from_file = f"\\b({bad_words.lstrip('|')})\\b"  # I don't remember why I create this f - stroke
-    return bad_word_from_file
+def bad_words_from_file(bad_word_file):
+    with open(bad_word_file, 'r') as txt_file:
+        # create pattern for regex to remove 'bad words'
+        words_to_remove = "|".join([word.strip() for word in txt_file.readlines()])
+    return f"r'{words_to_remove}'"
 
 
 def add_bad_word_from_clip(bad_word_file):
@@ -41,6 +38,7 @@ def add_bad_words_from_list(words_list, bad_word_file):
             if word not in bad_words_from_file(bad_word_file):
                 text_file.write(word + '\n')
 
+
 def main():
     path_to_folder = f'{Path().home()}/Documents/keywords'
     os.makedirs(path_to_folder, exist_ok=True)
@@ -49,9 +47,5 @@ def main():
     add_bad_word_from_clip(bad_word_file)
 
 
-
 if __name__ == '__main__':
     main()
-
-
-

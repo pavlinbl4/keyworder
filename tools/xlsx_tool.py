@@ -4,19 +4,16 @@ import string
 from openpyxl.styles import (
     Alignment, Font)
 
+
 #  set columns width in sheet header
 def set_column_widths(ws, columns_names, column_width):
     alphabet = string.ascii_uppercase
     for i in range(len(columns_names)):
         ws.column_dimensions[alphabet[i]].width = column_width[i]
-        # I think it is not needed
-        # if type(column_width) is list:
-        #     ws.column_dimensions[alphabet[i]].width = column_width[i]
-        # elif type(column_width) is tuple:
-        #     ws.column_dimensions[alphabet[i]].width = column_width[i]
         ws.cell(row=1, column=i + 1).font = Font(color="FF0000", size=14, bold=True)
         ws.cell(row=1, column=i + 1).alignment = Alignment(horizontal='center')
     write_column_headers(ws, columns_names)
+
 
 # Write the column headers if sheet is empty
 def write_column_headers(ws, columns_names):
@@ -24,7 +21,6 @@ def write_column_headers(ws, columns_names):
         for col_num, column in enumerate(columns_names, 1):
             cell = ws.cell(row=1, column=col_num)
             cell.value = column
-
 
 
 def write_info_to_xlsx(image_name, destination, path_to_log_folder):
@@ -37,18 +33,10 @@ def write_info_to_xlsx(image_name, destination, path_to_log_folder):
         set_column_widths(ws, columns_names=['File Name',
                                              'Tass-Photo',
                                              'PhotoXpress',
-                                             'Kommersant',],
-                          column_width=[50,50,50,50])
-
-
-
-
-
+                                             'Kommersant', ],
+                          column_width=[50, 50, 50, 50])
 
         wb.save(file_path)
-
-    # wb = openpyxl.load_workbook(file_path, read_only=False)
-
 
 
 if __name__ == '__main__':
