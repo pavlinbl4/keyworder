@@ -1,6 +1,6 @@
 import re
 from bad_words.bad_words_file import bad_words_from_file
-from keyworder.check_file_exist import create_file_if_no
+from kw_2023.check_file_exist import create_file_if_no
 
 
 def bad_words_remover(durty_words_string):
