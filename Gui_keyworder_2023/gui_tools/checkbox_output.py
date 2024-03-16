@@ -4,10 +4,12 @@ and checkboxes. Then return only words with checked boxes"""
 import tkinter as tk
 
 
-# gui window to select items from list
-def create_checkbox_list(words: list, window_name: str) -> list:
-    # Create window
-    window = tk.Tk()
+def create_checkbox_list(words: list, window_name: str, root=None) -> list:
+    # Use the provided root window or create a new one
+    if root is None:
+        window = tk.Tk()
+    else:
+        window = root
     window.title(window_name)
 
     # Set the height of the window
@@ -31,7 +33,7 @@ def create_checkbox_list(words: list, window_name: str) -> list:
         return checked_words
 
     for i, word in enumerate(words):
-        var = tk.IntVar()
+        var = tk.IntVar(master=window)
         keywords.append(var)
         row = i // max_col
         col = i % max_col
@@ -48,7 +50,9 @@ def create_checkbox_list(words: list, window_name: str) -> list:
     submit_btn = tk.Button(window, text="Submit", command=get_checked)
     submit_btn.grid(columnspan=max_col, pady=30)
 
-    window.mainloop()
+    if root is None:
+        window.mainloop()
+
     return checked_words
 
 
