@@ -1,10 +1,10 @@
 from Gui_keyworder_2023.gui_tools.checkbox_output import create_checkbox_list
-import unittest
+from unittest import TestCase, main
 from unittest.mock import MagicMock
 import tkinter as tk
 
 
-class TestCreateCheckboxList(unittest.TestCase):
+class TestCreateCheckboxList(TestCase):
     def setUp(self):
         self.words = ["apple", "banana", "cherry", "date", "elderberry"]
         self.window_name = "Test Window"
@@ -32,4 +32,4 @@ class TestCreateCheckboxList(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    main()
