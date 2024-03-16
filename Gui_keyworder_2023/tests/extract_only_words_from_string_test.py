@@ -15,7 +15,7 @@ class ExtractOnlyWords(TestCase):
 
     def test_words_with_hyphen(self):
         text_string = "Hello-World How-are-you?"
-        self.assertEqual(extract_only_words_from_string(text_string), ['Hello-World', 'How-are', 'you'])
+        self.assertEqual(extract_only_words_from_string(text_string), ['Hello-World', 'How-are-you'])
 
     def test_words_with_other_characters(self):
         text_string = "Hello, World! 123 @#$%^&*"
