@@ -28,3 +28,6 @@ class ExtractOnlyWords(TestCase):
     def test_empty_string(self):
         text_string = ""
         self.assertEqual(extract_only_words_from_string(text_string), [])
+
+if __name__ == '__main__':
+    main()
