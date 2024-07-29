@@ -20,7 +20,7 @@ class TestCreateCheckboxList(TestCase):
         tk_instance.geometry = MagicMock()
 
         # Calling the function
-        result = create_checkbox_list(self.words, self.window_name, root=tk_instance)
+        result = create_checkbox_list(self.words, self.window_name)
 
         # Check if Tkinter methods were called properly
         tk_instance.title.assert_called_once_with(self.window_name)
