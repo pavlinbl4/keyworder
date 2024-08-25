@@ -3,6 +3,8 @@ and checkboxes. Then return only words with checked boxes"""
 
 import tkinter as tk
 
+from gui_windows.geometry import set_window_size
+
 
 def create_checkbox_list(words: list, window_name: str, root=None) -> list:
     # Use the provided root window or create a new one
@@ -12,14 +14,7 @@ def create_checkbox_list(words: list, window_name: str, root=None) -> list:
         window = root
     window.title(window_name)
 
-    # Set the height of the window
-    window_width = 800
-    window_height = 400
-    screen_width = window.winfo_screenwidth()
-    screen_height = window.winfo_screenheight()
-    x = int(screen_width / 4)
-    y = int(screen_height / 2 - window_height / 2)
-    window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+    set_window_size(window, window_height=400, window_width=800)
 
     keywords = []
     max_col = 5
