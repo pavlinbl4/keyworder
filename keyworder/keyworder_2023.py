@@ -1,8 +1,10 @@
 import re
+
 import pyperclip
 from pymystem3 import Mystem
-from bad_words.bad_words_file import bad_words_from_file
-from keyworder.remove_doubles import no_doubles
+
+from keyworder.keyworder_2022_main import bad_words_from_file
+from keyworder.words_from_txt_file import no_doubles
 from kw_2023.check_file_exist import create_file_if_no
 from kw_2023.write_keywords import write_keywords
 from notific import notification
