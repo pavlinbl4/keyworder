@@ -2,6 +2,8 @@
 
 import tkinter as tk
 
+from gui_windows.geometry import set_window_size
+
 result_list = []
 
 
@@ -19,14 +21,7 @@ def create_input_window(window_name) -> tuple:
     window = tk.Tk()
     window.title(window_name)
 
-    # Set the height of the window to 100 pixels
-    window_width = 570
-    window_height = 500
-    screen_width = window.winfo_screenwidth()
-    screen_height = window.winfo_screenheight()
-    x = int(screen_width / 4)
-    y = int(screen_height / 2 - window_height / 2)
-    window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+    set_window_size(window, window_height=240, window_width=570)
 
     # Disable the ability to resize the window
     window.resizable(False, False)
